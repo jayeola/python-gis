@@ -1,0 +1,26 @@
+---
+version: "3.7"
+services:
+  lab1:
+    image: pycharm
+    container_name: lab1
+    hostname: lab1
+    build: ./
+    ports:
+      - "8080:8000"
+    command: "jupyter notebook --debug --no-browser --port=8000 --ip=0.0.0.0"
+    working_dir: /home/tester/projects
+    volumes:
+     - ./projects:/home/tester/projects
+    stdin_open: true
+    tty: true
+  lab2:
+    image: pycharm
+    container_name: lab2
+    hostname: lab2
+    ports:
+      - "9090:8000"
+    command: "jupyter notebook --debug --no-browser --port=8000 --ip=0.0.0.0"
+    working_dir: /home/tester/
+    stdin_open: true
+    tty: true
